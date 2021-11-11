@@ -14,8 +14,6 @@ export WQL_NUM_LEVELS=2
 export WQL_ROOTS_PER_TABLE=8
 export WQL_POSTGRES_CONNECTION_STRING="postgresql://${SQLUSER}:${SQLPASSWORD}@${SQLADDRESS}?port=${SQLPORT}&dbname=${SQLDATABASE}"
 
-env | grep WQL
-
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$PARSED"
