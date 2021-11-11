@@ -18,6 +18,6 @@ USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
-ADD ./wrapper.sh /wrapper.sh
-CMD [ "/bin/bash", "/wrapper.sh" ]
+ADD ./entrypoint.sh /entrypoint.sh
+CMD [ "/bin/bash", "/entrypoint.sh" ]
 
