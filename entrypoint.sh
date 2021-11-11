@@ -14,6 +14,8 @@ WQL_NUM_LEVELS=2
 WQL_ROOTS_PER_TABLE=8
 WQL_POSTGRES_CONNECTION_STRING=postgresql://${SQLUSER}:${SQLPASSWORD}@${SQLADDRESS}?port=${SQLPORT}&dbname=${SQLDATABASE}
 
-printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$STARTUP"
+PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 
-exec env ${STARTUP}
+printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$PARSED"
+
+exec env ${PARSED}
