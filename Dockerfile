@@ -2,10 +2,6 @@
 
 FROM ubuntu:20.04
 
-USER container
-ENV USER=container HOME=/home/container
-WORKDIR /home/container
-
 RUN apt-get update
 RUN apt-get install -y wget 
 RUN wget -O WorldQLServer https://github.com/WorldQL/mammoth/releases/download/v0.02-alpha/WorldQLServer
@@ -19,6 +15,10 @@ ENV WQL_LEAF_SQUARE_SIZE=16
 ENV WQL_TREE_DEGREE=512
 ENV WQL_NUM_LEVELS=2
 ENV WQL_ROOTS_PER_TABLE=8
+
+USER container
+ENV USER=container HOME=/home/container
+WORKDIR /home/container
 
 ADD wrapper.sh ./wrapper.sh
 CMD ["./wrapper.sh"]
