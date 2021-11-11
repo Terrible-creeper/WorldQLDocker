@@ -20,6 +20,6 @@ USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
-ADD wrapper.sh ./wrapper.sh
+ADD ./wrapper.sh /wrapper.sh
 CMD ["./wrapper.sh"]
 
