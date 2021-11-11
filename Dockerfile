@@ -4,8 +4,6 @@ FROM ubuntu:20.04
 
 RUN apt-get update
 RUN apt-get install -y wget 
-RUN wget -O WorldQLServer https://github.com/WorldQL/mammoth/releases/download/v0.02-alpha/WorldQLServer
-RUN chmod +x WorldQLServer
 
 ENV DEBIAN_FRONTEND=noninteractive 
 RUN apt-get update && \
@@ -21,5 +19,5 @@ ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
 ADD ./wrapper.sh /wrapper.sh
-CMD ["/wrapper.sh"]
+CMD [ "/bin/bash", "/wrapper.sh" ]
 
